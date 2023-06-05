@@ -1,7 +1,5 @@
 package model;
 
-enum TypeOfToy {Car, Doll, Robot, Animal}
-
 public class Toy {
     private static int serialNumber = 1111;
     private String name;
