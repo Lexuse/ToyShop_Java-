@@ -3,39 +3,39 @@ package model;
 enum TypeOfToy {Car, Doll, Robot, Animal}
 
 public class Toy {
-    private static int SerialNumber = 1111;
-    private String Name;
-    private int WeightWin;
-    private TypeOfToy Type;
+    private static int serialNumber = 1111;
+    private String name;
+    private int weightWin;
+    private TypeOfToy type;
 
     public Toy(TypeOfToy type ,String name, int weightWin) {
-        Type = type;
-        Name = name;
+        this.type = type;
+        this.name = name;
         if(weightWin >=0 && weightWin <=100) {
-            WeightWin = weightWin;
+            this.weightWin = weightWin;
         }
-        else WeightWin = 50;
-        SerialNumber += 1;
+        else this.weightWin = 50;
+        serialNumber += 1;
     }
 
     public static int getSerialNumber() {
-        return SerialNumber;
+        return serialNumber;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public int getWeightWin() {
-        return WeightWin;
+        return weightWin;
     }
 
     public TypeOfToy getType() {
-        return Type;
+        return type;
     }
 
     @Override
     public String toString() {
-        return "Тип игрушки: " + this.getType()  + "Имя игрушки: " + this.getName() + "Шанс выиграть игрушку :" + this.getWeightWin() + "Серийный номер: " + getSerialNumber();
+        return "Тип игрушки: " + this.getType()  + "Имя игрушки: " + this.getName() + "Шанс выиграть игрушку :" + this.getWeightWin() + "Серийный номер: " + this.getSerialNumber();
     }
 }
