@@ -1,6 +1,3 @@
-import model.goods.toy.ToyCreate;
-import model.goods.toy.ToysStore;
-import model.goods.toy.TypeOfToy;
 import model.warehous.WarehouseType;
 import model.warehous.Warehouses;
 
@@ -11,8 +8,8 @@ public class Program {
 //        toyCreater = new ToyCreate(TypeOfToy.Кукла, "Барби", 60, 3);
 //        //System.out.println(toystore.toString());
         Warehouses war = new Warehouses();
-        war.addWarehouse("Склад 1", WarehouseType.Книги);
-        war.addWarehouse("Склад 2", WarehouseType.Игрушки);
+        war.addWarehouse("Томск", WarehouseType.Игрушки);
+        war.addWarehouse("На речной", WarehouseType.Книги);
 
         System.out.println(war.warehousesInfo());
     }

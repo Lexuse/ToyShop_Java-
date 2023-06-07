@@ -16,10 +16,8 @@ public class Warehouses {
     public String warehousesInfo(){
         StringBuilder result = new StringBuilder();
         result.append("Количество имеющихся складов: " + warehouses.size() + "\n");
-        for (Warehouse war : warehouses){
-            result.append("Название " + warehouses.indexOf(warehouse) + "-го " + "склада "  + ": " + warehouse.getName()+ "\n");
-            result.append("Тип " + warehouses.indexOf(warehouse)+ "-го " +  "склада " + ": " + warehouse.getType() + "\n");
-            result.append("ИД " + warehouses.indexOf(warehouse)+ "-го " + "склада " + ": " + warehouse.getiD() + "\n" + "\n");
+        for (int i = 0; i < warehouses.size() ; i++) {
+            result.append(warehouse.toString());
         }
         return result.toString();
     }

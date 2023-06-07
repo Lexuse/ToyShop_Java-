@@ -23,4 +23,12 @@ public class Warehouse {
         return iD;
     }
 
+    @Override
+    public String toString(){
+         return "Название склада: " + this.getName() + "\n" +
+                 "Тип склада: " + this.getType() + "\n" +
+                 "ИД склада: " + getiD() + "\n";
+    }
+
+
 }
