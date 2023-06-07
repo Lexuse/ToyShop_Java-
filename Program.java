@@ -1,6 +1,6 @@
-import model.ToyCreate;
-import model.ToyStore;
-import model.TypeOfToy;
+import model.toy.ToyCreate;
+import model.toy.ToyStore;
+import model.toy.TypeOfToy;
 
 public class Program {
     public static void main (String[] args){
