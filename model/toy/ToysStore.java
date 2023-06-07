@@ -3,7 +3,7 @@ package model.toy;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ToyStore {
+public class ToysStore {
     private List<Toy> toyStore = new ArrayList<Toy>();
 
     public void AddToyToStore(Toy toy, int amount){
@@ -14,18 +14,4 @@ public class ToyStore {
         }
         toString();
     }
-
-    //public ToyStore(List<Toy> toyStore) {
-    //    this.toyStore = toyStore;
-    //}
-
-    @Override
-    public String toString(){
-        StringBuilder str =new StringBuilder();
-        for (Toy toys: toyStore){
-            str.append(toys.toString());
-        }
-        return str.toString();
-    }
-
 }

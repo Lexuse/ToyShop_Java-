@@ -40,9 +40,9 @@ public class Toy implements Product, Serializable {
 
     @Override
     public String toString() {
-        return "Тип игрушки: " + this.getType()
-                + "Имя игрушки: " + this.getName()
-                + "Шанс выиграть игрушку :" + this.getWeightWin()
-                + "Серийный номер: " + this.getSerialNumber();
+        return  "Тип игрушки: " + this.getType() +
+                "Имя игрушки: " + this.getName() +
+                "Шанс выиграть игрушку :" + this.getWeightWin() +
+                "Серийный номер: " + this.getSerialNumber();
     }
 }

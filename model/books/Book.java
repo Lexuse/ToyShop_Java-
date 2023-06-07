@@ -12,7 +12,7 @@ public class Book implements Product, Serializable {
     private String name;
     private String author;
     private int weightWin;
-    private static int serialNumber = 1111;
+    private static int serialNumber = 2222;
 
 
     public Book(TypeOfBook type ,String name, String author, int weightWin) {
@@ -44,11 +44,11 @@ public class Book implements Product, Serializable {
 
     @Override
     public String toString() {
-        return "Жанр книги: " + this.getType()
-                + "Автор книги: " + this.getAuthor()
-                + "Название книги: " + this.getName()
-                + "Шанс выиграть книгу :" + this.getWeightWin()
-                + "Серийный номер: " + this.getSerialNumber();
+        return  "Жанр книги: " + this.getType() +
+                "Автор книги: " + this.getAuthor() +
+                "Название книги: " + this.getName() +
+                "Шанс выиграть книгу :" + this.getWeightWin() +
+                "Серийный номер: " + this.getSerialNumber();
     }
 
 

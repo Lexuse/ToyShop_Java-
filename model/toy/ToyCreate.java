@@ -1,10 +1,10 @@
 package model.toy;
 
 public class ToyCreate {
-    ToyStore toyStore = new ToyStore();
+    ToysStore toysStore = new ToysStore();
 
     public ToyCreate(TypeOfToy type, String name, int weightWin, int amount) {
         Toy toy = new Toy(type, name, weightWin);
-        toyStore.AddToyToStore(toy,amount);
+        toysStore.AddToyToStore(toy,amount);
     }
 }
