@@ -1,4 +1,4 @@
-package model.toy;
+package model.goods.toy;
 
 public class ToyCreate {
     ToysStore toysStore = new ToysStore();

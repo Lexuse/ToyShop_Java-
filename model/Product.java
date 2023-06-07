@@ -1,7 +1,5 @@
 package model;
 
-import model.toy.TypeOfToy;
-
 public interface Product {
 
     ProductType getProductType();

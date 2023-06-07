@@ -1,4 +1,4 @@
-package model.books;
+package model.goods.books;
 
 public enum TypeOfBook {
 

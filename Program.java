@@ -1,12 +1,13 @@
-import model.toy.ToyCreate;
-import model.toy.ToysStore;
-import model.toy.TypeOfToy;
+import model.goods.toy.ToyCreate;
+import model.goods.toy.ToysStore;
+import model.goods.toy.TypeOfToy;
 
 public class Program {
     public static void main (String[] args){
         ToyCreate toyCreater;
         ToysStore toystore = new ToysStore();
-        toyCreater = new ToyCreate(TypeOfToy.Doll, "Барби", 60, 3);
+        toyCreater = new ToyCreate(TypeOfToy.Кукла, "Барби", 60, 3);
         //System.out.println(toystore.toString());
+
     }
 }

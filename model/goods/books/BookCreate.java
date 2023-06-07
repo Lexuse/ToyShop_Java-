@@ -1,5 +1,4 @@
-package model.books;
-
+package model.goods.books;
 
 public class BookCreate {
     BooksStore booksStore = new BooksStore();

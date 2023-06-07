@@ -1,5 +1,4 @@
-package model.books;
-
+package model.goods.books;
 
 import java.util.ArrayList;
 import java.util.List;
