@@ -7,9 +7,8 @@ public class Warehouses {
     private List<Warehouse> warehouses = new ArrayList<>();
     Warehouse warehouse;
 
-    public void addWarehouse (String name, WarehouseType type){
-        warehouse = new Warehouse(name, type);
-        warehouses.add (warehouse);
+    public void addWarehouse (Warehouse war){
+        warehouses.add (war);
 
     }
 
