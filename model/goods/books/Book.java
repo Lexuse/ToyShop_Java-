@@ -42,10 +42,10 @@ public class Book implements Product, Serializable {
 
     @Override
     public String toString() {
-        return  "Жанр книги: " + this.getType() +
-                "Автор книги: " + this.getAuthor() +
-                "Название книги: " + this.getName() +
-                "Шанс выиграть книгу :" + this.getWeightWin() +
+        return  "Жанр книги: " + this.getType() + "\n" +
+                "Автор книги: " + this.getAuthor() + "\n" +
+                "Название книги: " + this.getName() + "\n" +
+                "Шанс выиграть книгу :" + this.getWeightWin() + "\n" +
                 "Серийный номер: " + this.getSerialNumber();
     }
 
