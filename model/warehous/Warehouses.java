@@ -15,11 +15,11 @@ public class Warehouses<E extends Warehouse> implements InterfaceWarehouse, Seri
     }
 
     public boolean addWarehouse(E warehouse) {
-        return this.getWarehouses().add(warehouse);
+        return this.getProducts().add(warehouse);
     }
 
     @Override
-    public List getWarehouses() {
+    public List getProducts() {
         return this.warehouses;
     }
 
