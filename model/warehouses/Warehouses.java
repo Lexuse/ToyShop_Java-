@@ -20,9 +20,9 @@ public class Warehouses <E extends Warehouse> implements InterfaceWarehouses<E>,
 
     public String printWarehouses() {
         StringBuilder result = new StringBuilder();
-        result.append("Количество складов: " + warehouses.size());
+        result.append("Количество складов: " + warehouses.size() + "\n");
         for (E warehouse : warehouses){
-            result.append(warehouse.getName());
+            result.append(warehouse.getName() + "\n");
         }
         return result.toString();
     }
@@ -39,12 +39,13 @@ public class Warehouses <E extends Warehouse> implements InterfaceWarehouses<E>,
     }
 
     @Override
-    public void save(Writable writable, String fileName) {
+    public void save(Writable<Warehouses<E>> writable, String fileName) {
+        writable.save(this, fileName);
 
     }
 
     @Override
     public Iterator iterator() {
-        return null;
+        return new IteratorWarehouses(warehouses);
     }
 }
