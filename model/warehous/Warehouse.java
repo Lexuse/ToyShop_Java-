@@ -17,8 +17,8 @@ public class Warehouse<E extends Product> implements InterfaceWarehouse, Seriali
         iD += 1;
     }
 
-    public <E extends Product> boolean addProduct(E product) {
-        return this.getProducts().add(product);
+    public boolean addProduct(E product) {
+        return  this.getProducts().add(product);
     }
 
     public E findProduct(String name){
@@ -26,22 +26,16 @@ public class Warehouse<E extends Product> implements InterfaceWarehouse, Seriali
             if (product.getName().equals(name)){
                 return  product;
             }
-        }
+        }return null;
     }
 
     public void setName(String name){this.name =name;}
     public void setType(WarehouseType type){this.type = type;}
 
-    public String getName() {
-        return name;
-    }
-    public WarehouseType getType() {
-        return type;
-    }
-    public  int getID() {
-        return iD;
-    }
-    public List getProducts() {return this.products;}
+    public String getName() {return name;}
+    public WarehouseType getType() {return type;}
+    public  int getID() {return iD;}
+    public List<E> getProducts() {return this.products;}
 
     @Override
     public String toString(){
@@ -50,9 +44,9 @@ public class Warehouse<E extends Product> implements InterfaceWarehouse, Seriali
                  "ИД склада: " + getID() + "\n";
     }
 
-
     @Override
-    public Iterator iterator() {
-        return null;
+    public Iterator<E> iterator() {
+        return new ProductIterator<>(products);
     }
+
 }
