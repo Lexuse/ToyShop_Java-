@@ -11,7 +11,7 @@ public class Warehouse<E extends Product> implements InterfaceWarehouse, Seriali
     private List<E> products;
     private static int iD = 5555;
 
-    Warehouse(String name, WarehouseType type) {
+    public Warehouse(String name, WarehouseType type) {
         this.name = name;
         this.type = type;
         iD += 1;
