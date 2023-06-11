@@ -14,5 +14,10 @@ public abstract class Command {
     public String getDescriptionCommand() {
         return descriptionCommand;
     }
+
+    public Console getConsole(){
+        return console;
+    }
+
     public abstract boolean executeCommand();
 }

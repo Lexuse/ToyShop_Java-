@@ -11,6 +11,6 @@ public class WarehousesSave extends Command{
 
     @Override
     public boolean executeCommand() {
-        return getDescriptionCommand().req;
+        return null;
     }
 }
