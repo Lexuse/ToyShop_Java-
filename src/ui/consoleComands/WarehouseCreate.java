@@ -11,6 +11,7 @@ public class WarehouseCreate extends Command{
 
     @Override
     public boolean executeCommand() {
-        return false;
+        getConsole().createWarehouse();
+        return true;
     }
 }

@@ -33,6 +33,11 @@ public class Presenter {
         return true;
     }
 
+    public boolean printToyWarehouses(){
+        view.print(service.);
+        return true;
+    }
+
     public boolean printInfoAllWarehouses(){
         service.printInfoAllWarehouses();
         return true;

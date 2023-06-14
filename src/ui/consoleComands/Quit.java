@@ -10,6 +10,7 @@ public class Quit extends Command{
 
     @Override
     public boolean executeCommand() {
+        getConsole().quit();
         return false;
     }
 }

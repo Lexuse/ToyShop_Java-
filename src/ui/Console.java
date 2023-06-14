@@ -1,7 +1,10 @@
 package src.ui;
 
+import src.model.goods.books.Book;
+import src.model.warehous.WarehouseType;
 import src.presenter.Presenter;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Console implements  View{
@@ -28,16 +31,12 @@ public class Console implements  View{
         }
     }
 
-    public String scan(){return  scanner.nextLine();}
+    public String scan(){return scanner.nextLine();}
     private boolean isCanBeInt(String text) {
         return text.matches("[0-9]+");
     }
     public void quit() {isWork = false;}
 
-    public String requestNameOfNewWarehouse(){
-        print();
-        return
-    }
 
     private void mainRequest() {
         print(menu.printMainCommands());
@@ -55,9 +54,48 @@ public class Console implements  View{
     }
 
     public void createWarehouse() {
-        String fTreeName = requestNameFTree();
-        if (presenter.addFamilyTree(fTreeName)) {
-            while (editTree()) ;
-        }
+        String warehouseName = reqNameOfWarehouse();
+        WarehouseType type = reqTypeOfWarehouse();
+        if (presenter.addWarehouse(warehouseName, type)){
+            print("Склад успешно добавлен");
+        }else print("Не удалось добавить склад");
     }
+
+    public void AddBookToWarehouse() {
+        print("Выберите существующий склад игрушек для добавления товара");
+
+    }
+
+    public boolean reqSave(){
+        print("Для сохранения введите имя магазина");
+        return presenter.save(scan());
+    }
+
+
+
+
+
+    //Запрос имени склада
+    public String reqNameOfWarehouse(){
+        print("Введите название склада: ");
+        return scan();
+    }
+    public WarehouseType reqTypeOfWarehouse() {
+        print("Укажите тип склада: \n");
+        print("1: Игрушки" + "2: Книги");
+        String nMenuStr = scan();
+        WarehouseType type = WarehouseType.Toys;
+        if (isCanBeInt(nMenuStr)) {
+            int nMenu = Integer.parseInt(nMenuStr);
+            if (1<= nMenu && nMenu <=2) {
+                if (nMenu == 1) {
+                    type = WarehouseType.Toys;                }
+            }else if (nMenu ==2) {
+                type = WarehouseType.Books;
+            } else print("Некорректный ввод!");
+        }
+        return type;
+    }
+
+
 }

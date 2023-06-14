@@ -2,6 +2,7 @@ package src.model.warehouses;
 
 import src.model.fileManager.Writable;
 import src.model.warehous.Warehouse;
+import src.model.warehous.WarehouseType;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -25,6 +26,15 @@ public class Warehouses <E extends Warehouse> implements InterfaceWarehouses<E>,
             result.append(warehouse.getName() + "\n");
         }
         return result.toString();
+    }
+
+        public String printToyWarehouses(){
+        List<E> toyWarehouses = new ArrayList<>();
+        for (E war : warehouses){
+            if (war.getType() == WarehouseType.Toys){
+                toyWarehouses.add(war);
+            }
+        }return toyWarehouses.;
     }
 
     @Override

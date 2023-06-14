@@ -10,6 +10,9 @@ import src.model.warehous.WarehouseType;
 import src.model.warehouses.InterfaceWarehouses;
 import src.model.warehouses.Warehouses;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Service {
 
     private Warehouse<Product> warehouse;
