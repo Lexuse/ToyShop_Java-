@@ -53,4 +53,8 @@ public class Presenter {
         service.save(fileName);
         return true;
     }
+
+    public String getShopList(){
+        return  service.getShopsList();
+    }
 }

@@ -11,6 +11,7 @@ public class Menu {
 
     public Menu(Console console){
         commands = new ArrayList<>();
+        commands.add(new getAllShops(console));
         commands.add(new LoadWarehouse(console));
         commands.add(new PrintWarehouses(console));
         commands.add(new WarehouseCreate(console));

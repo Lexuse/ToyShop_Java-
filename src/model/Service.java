@@ -17,6 +17,7 @@ public class Service {
 
     private Warehouse<Product> warehouse;
     private InterfaceWarehouses<Warehouse> warehouses;
+    FileManager fl = new FileManager();
 
     public Service() {
         this(new Warehouses<>());
@@ -81,4 +82,7 @@ public class Service {
         return fileManager.read(fileName);
     }
 
+    public String getShopsList(){
+        return fl.getShopsList();
+    }
 }

@@ -1,19 +1,15 @@
 package src.model.fileManager;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.*;
 
 public class FileManager<E> implements Writable<E>{
 
 
     @Override
     public void save(E e, String fileName) {
-        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileName))) {
-            objectOutputStream.writeObject(e);
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) {
+            oos.writeObject(e);
+            saveShopName(fileName);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -21,14 +17,43 @@ public class FileManager<E> implements Writable<E>{
 
     @Override
     public E read(String fileName) {
-        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(fileName))) {
-            E result = (E) objectInputStream.readObject();
-            objectInputStream.close();
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
+            E result = (E)ois.readObject();
+            ois.close();
             return result;
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
         return null;
+    }
+
+    private void saveShopName(String name){
+        try (FileWriter writer = new FileWriter("src/model/magazines/Shops.txt", true))
+        {
+         writer.write(name);
+         writer.append('\n');
+         writer.flush();
+            System.out.println("Сохранение");
+        } catch (IOException e) {
+            System.out.println(e.getMessage());;
+        }
+    }
+
+    public String getShopsList(){
+        StringBuilder result = new StringBuilder();
+        try(FileReader reader = new FileReader("src/model/magazines/Shops.txt"))
+            {
+                int c;
+                while ((c = reader.read())!=-1){
+                    result.append((char) c);
+                }
+                //System.out.println(result.toString());
+                return result.toString();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

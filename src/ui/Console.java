@@ -84,6 +84,10 @@ public class Console implements  View{
         return presenter.printWarehouses();
     }
 
+    public void reqShopList(){
+        System.out.println(presenter.getShopList());
+    }
+
 
 
     //Запрос имени склада
