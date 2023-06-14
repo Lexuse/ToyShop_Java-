@@ -50,7 +50,7 @@ public class FileManager<E> implements Writable<E>{
                 //System.out.println(result.toString());
                 return result.toString();
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            return "Пока не создано ни одного магазина. \n";
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
