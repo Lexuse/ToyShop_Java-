@@ -1,10 +1,8 @@
 package src.ui;
 
-import src.model.goods.books.Book;
 import src.model.warehous.WarehouseType;
 import src.presenter.Presenter;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class Console implements  View{
@@ -31,6 +29,12 @@ public class Console implements  View{
         }
     }
 
+    @Override
+    public void print(String text) {
+        System.out.println(text);
+
+    }
+
     public String scan(){return scanner.nextLine();}
     private boolean isCanBeInt(String text) {
         return text.matches("[0-9]+");
@@ -53,7 +57,7 @@ public class Console implements  View{
         }
     }
 
-    public void createWarehouse() {
+    public void reqCreateWarehouse() {
         String warehouseName = reqNameOfWarehouse();
         WarehouseType type = reqTypeOfWarehouse();
         if (presenter.addWarehouse(warehouseName, type)){
@@ -61,7 +65,7 @@ public class Console implements  View{
         }else print("Не удалось добавить склад");
     }
 
-    public void AddBookToWarehouse() {
+    public void reqAddBookToWarehouse() {
         print("Выберите существующий склад игрушек для добавления товара");
 
     }
@@ -71,7 +75,14 @@ public class Console implements  View{
         return presenter.save(scan());
     }
 
+    public boolean reqLoad(){
+        print("Введите имя магазина для загрузки");
+        return presenter.load(scan());
+    }
 
+    public boolean reqPrintWarehouses(){
+        return presenter.printWarehouses();
+    }
 
 
 

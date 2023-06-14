@@ -63,6 +63,14 @@ public class Service {
         return this.getWarehouses().printWarehouses();
     }
 
+    public Warehouses geyToyWarehouses(){
+        return this.geyToyWarehouses();
+    }
+
+    public Warehouses getBookWarehouses(){
+        return this.getBookWarehouses();
+    }
+
     public void save(String fileName){
         FileManager<Warehouses<Warehouse>> fileManager = new FileManager<>();
         this.getWarehouses().save(fileManager, fileName);

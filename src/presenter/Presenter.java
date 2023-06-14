@@ -34,7 +34,7 @@ public class Presenter {
     }
 
     public boolean printToyWarehouses(){
-        view.print(service.);
+        view.print(service.printWarehouses());
         return true;
     }
 
@@ -45,7 +45,7 @@ public class Presenter {
     }
 
     public boolean load(String fileName) {
-        service.read(fileName);
+        service = new Service(service.read(fileName));
         return true;
     }
 

@@ -10,7 +10,7 @@ public class AddBookToWarehouse extends Command{
 
     @Override
     public boolean executeCommand(){
-        getConsole().AddBookToWarehouse();
+        getConsole().reqAddBookToWarehouse();
         return true;
     }
 }

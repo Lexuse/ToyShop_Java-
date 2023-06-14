@@ -28,13 +28,26 @@ public class Warehouses <E extends Warehouse> implements InterfaceWarehouses<E>,
         return result.toString();
     }
 
-        public String printToyWarehouses(){
+    public List<E> geyToyWarehouses(){
         List<E> toyWarehouses = new ArrayList<>();
-        for (E war : warehouses){
-            if (war.getType() == WarehouseType.Toys){
-                toyWarehouses.add(war);
-            }
-        }return toyWarehouses.;
+        if(warehouses.size() != 0) {
+            for (E war : warehouses) {
+                if (war.getType() == WarehouseType.Toys) {
+                    toyWarehouses.add(war);
+                }
+            }return toyWarehouses;
+        } else return null;
+    }
+
+    public List<E> getBookWarehouses(){
+        List<E> bookWarehouses  = new ArrayList<>();
+        if(warehouses.size() != 0) {
+            for (E war : warehouses) {
+                if (war.getType() == WarehouseType.Books) {
+                    bookWarehouses.add(war);
+                }
+            }return bookWarehouses;
+        } else return null;
     }
 
     @Override

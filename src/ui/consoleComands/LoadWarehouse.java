@@ -1,4 +1,15 @@
 package src.ui.consoleComands;
 
-public class LoadWarehouse {
+import src.ui.Console;
+
+public class LoadWarehouse extends Command{
+    public LoadWarehouse(Console console){
+        super(console);
+        descriptionCommand = "Загрузить магазин";
+    }
+    @Override
+    public boolean executeCommand(){
+        getConsole().reqLoad();
+        return true;
+    }
 }

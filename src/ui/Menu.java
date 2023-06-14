@@ -11,30 +11,28 @@ public class Menu {
 
     public Menu(Console console){
         commands = new ArrayList<>();
-        commands.add(new WarehouseCreate(console));
-        commands.add(new EditWarehouse(console));
         commands.add(new LoadWarehouse(console));
-        commands.add(new SaveWarehouses(console));
         commands.add(new PrintWarehouses(console));
+        commands.add(new WarehouseCreate(console));
+        //commands.add(new EditWarehouse(console));
+        commands.add(new SaveWarehouses(console));
+
 
         editWarehousesCommands = new ArrayList<>();
         editWarehousesCommands.add((new AddToyToWarehouse(console)));
         editWarehousesCommands.add((new AddBookToWarehouse(console)));
-        editWarehousesCommands.add(new PrintWarehouse(console));
+        //editWarehousesCommands.add(new PrintWarehouse(console));
     }
 
     public int getSizeMainCommands() {
         return commands.size();
     }
-
-    public int getSizeEditTreeCommands() {
-        return editWarehousesCommands.size();
-    }
-
     public boolean executeMainCommands(int nMenu) {
         return commands.get(nMenu - 1).executeCommand();
     }
-
+    public int editWarehousesCommands() {
+        return editWarehousesCommands.size();
+    }
     public boolean executeEditTreeCommands(int nMenu) {
         return editWarehousesCommands.get(nMenu - 1).executeCommand();
     }
@@ -49,9 +47,9 @@ public class Menu {
         return result.toString();
     }
 
-    public String printEditTreeCommands() {
+    public String printEditWarehouse() {
         StringBuilder result = new StringBuilder();
-        result.append("Введите что хотите сделать c генеалогическим древом:\n");
+        result.append("Введите что хотите сделать со складом:\n");
         for (int i = 0; i < editWarehousesCommands.size(); i++) {
             result.append(String.format("%d. ", i + 1));
             result.append(editWarehousesCommands.get(i).getDescriptionCommand() + "\n");
