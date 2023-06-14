@@ -28,7 +28,7 @@ public class FileManager<E> implements Writable<E>{
     }
 
     private void saveShopName(String name){
-        try (FileWriter writer = new FileWriter("src/model/magazines/Shops.txt", true))
+        try (FileWriter writer = new FileWriter("src/model/shops/Shops.txt", true))
         {
          writer.write(name);
          writer.append('\n');
@@ -41,7 +41,7 @@ public class FileManager<E> implements Writable<E>{
 
     public String getShopsList(){
         StringBuilder result = new StringBuilder();
-        try(FileReader reader = new FileReader("src/model/magazines/Shops.txt"))
+        try(FileReader reader = new FileReader("src/model/shops/Shops.txt"))
             {
                 int c;
                 while ((c = reader.read())!=-1){
