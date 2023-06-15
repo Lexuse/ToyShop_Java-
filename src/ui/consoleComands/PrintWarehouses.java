@@ -5,7 +5,7 @@ import src.ui.Console;
 public class PrintWarehouses extends Command{
     public PrintWarehouses(Console console){
         super(console);
-        descriptionCommand = "Посмотреть имеющиеся склады";
+        descriptionCommand = "Посмотреть имеющиеся склады магазина";
     }
 
     @Override

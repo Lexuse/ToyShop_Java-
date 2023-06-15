@@ -9,7 +9,7 @@ public class LoadWarehouse extends Command{
     }
     @Override
     public boolean executeCommand(){
-        getConsole().reqLoad();
+        getConsole().reqLoadShops();
         return true;
     }
 }

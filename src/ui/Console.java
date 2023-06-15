@@ -75,9 +75,14 @@ public class Console implements  View{
         return presenter.save(scan());
     }
 
-    public boolean reqLoad(){
-        print("Введите имя магазина для загрузки");
-        return presenter.load(scan());
+    public boolean reqLoadShops(){
+        String answer = presenter.getShopList();
+        if(!answer.equals("Пока не создано ни одного магазина.")){
+            print("Введите имя магазина для загрузки");
+            System.out.println(presenter.getShopList());
+            return presenter.load(scan());
+        }else print("Список магазинов пуст! \n");
+        return false;
     }
 
     public boolean reqPrintWarehouses(){

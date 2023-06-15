@@ -11,12 +11,13 @@ public class Menu {
 
     public Menu(Console console){
         commands = new ArrayList<>();
-        commands.add(new getAllShops(console));
-        commands.add(new LoadWarehouse(console));
-        commands.add(new PrintWarehouses(console));
-        commands.add(new WarehouseCreate(console));
+        commands.add(new getAllShops(console));//Вывести список магазинов
+        commands.add(new LoadWarehouse(console));//Загрузить магазин
+        commands.add(new PrintWarehouses(console));//Посмотреть имеющиеся склады магазина
+        commands.add(new WarehouseCreate(console));//Добавить новый склад
         //commands.add(new EditWarehouse(console));
-        commands.add(new SaveWarehouses(console));
+        commands.add(new SaveWarehouses(console));//Сохранить магазин
+        commands.add(new Quit(console));//Выйти из программы
 
 
         editWarehousesCommands = new ArrayList<>();
@@ -40,7 +41,7 @@ public class Menu {
 
     public String printMainCommands() {
         StringBuilder result = new StringBuilder();
-        result.append("Выберите операцию над складами:\n");
+        result.append("Выберите операцию над Магазинами:\n");
         for (int i = 0; i < commands.size(); i++) {
             result.append(String.format("%d. ", i + 1));
             result.append(commands.get(i).getDescriptionCommand() + "\n");
