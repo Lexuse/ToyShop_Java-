@@ -23,7 +23,7 @@ public class Warehouses <E extends Warehouse> implements InterfaceWarehouses<E>,
         StringBuilder result = new StringBuilder();
         result.append("Количество складов: " + warehouses.size() + "\n");
         for (E warehouse : warehouses){
-            result.append(warehouse.getName() + "\n");
+            result.append(warehouse.getName() + ".  Тип склада:" + warehouse.getType().toString() + "\n");
         }
         return result.toString();
     }

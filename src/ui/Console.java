@@ -62,7 +62,11 @@ public class Console implements  View{
 
     public void reqCreateWarehouse() {
         String warehouseName = reqNameOfWarehouse();
-        WarehouseType type = reqTypeOfWarehouse();
+        String typeIn = reqTypeOfWarehouse();
+        WarehouseType type = WarehouseType.Books;
+        if (type.equals("Toys")){
+            type = WarehouseType.Toys;
+        }
         if (presenter.addWarehouse(warehouseName, type)){
             print("Склад успешно добавлен");
         }else print("Не удалось добавить склад");
@@ -105,6 +109,10 @@ public class Console implements  View{
         return true;
     }
 
+    public boolean reqPrintWarehouse(){
+        return true;
+    }
+
     public void reqShopList(){
         System.out.println(presenter.getShopList());
     }
@@ -116,21 +124,22 @@ public class Console implements  View{
         print("Введите название склада: ");
         return scan();
     }
-    public WarehouseType reqTypeOfWarehouse() {
-        print("Укажите тип склада: \n");
-        print("1: Игрушки" + "2: Книги");
+    public String reqTypeOfWarehouse() {
+        String result = "";
+        print("Укажите тип склада:");
+        print("1: Игрушки\n2: Книги");
         String nMenuStr = scan();
-        WarehouseType type = WarehouseType.Toys;
         if (isCanBeInt(nMenuStr)) {
             int nMenu = Integer.parseInt(nMenuStr);
             if (1<= nMenu && nMenu <=2) {
                 if (nMenu == 1) {
-                    type = WarehouseType.Toys;                }
+                    result = "Toys";
+                }
             }else if (nMenu ==2) {
-                type = WarehouseType.Books;
+                    result = "Books";
             } else print("Некорректный ввод!");
         }
-        return type;
+        return result;
     }
 
     public boolean addToy(){
@@ -148,6 +157,7 @@ public class Console implements  View{
         StringBuilder result = new StringBuilder();
         for (String type : typeOfToy){
             result.append(type);
+            result.append("\n");
         }
         print(result.toString());
         print("Укажите тип игрушки из списка возможных \n");
