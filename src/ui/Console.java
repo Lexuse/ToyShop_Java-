@@ -64,7 +64,7 @@ public class Console implements  View{
         String warehouseName = reqNameOfWarehouse();
         String typeIn = reqTypeOfWarehouse();
         WarehouseType type = WarehouseType.Books;
-        if (type.equals("Toys")){
+        if (typeIn.equals("Toys")){
             type = WarehouseType.Toys;
         }
         if (presenter.addWarehouse(warehouseName, type)){
@@ -93,6 +93,7 @@ public class Console implements  View{
     }
 
     public boolean reqPrintWarehouses(){
+        //if(presenter.)
         presenter.printWarehouses();
         print(menu.printEditWarehouse());
         String nMenuStr = scan();
@@ -132,7 +133,7 @@ public class Console implements  View{
         String nMenuStr = scan();
         if (isCanBeInt(nMenuStr)) {
             int nMenu = Integer.parseInt(nMenuStr);
-            if (1<= nMenu && nMenu <=2) {
+            if (nMenu > 0 && nMenu <=2) {
                 if (nMenu == 1) {
                     result = "Toys";
                 }

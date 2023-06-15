@@ -14,15 +14,16 @@ public class Menu {
         commands.add(new getAllShops(console));//Вывести список магазинов
         commands.add(new LoadWarehouse(console));//Загрузить магазин
         commands.add(new PrintWarehouses(console));//Посмотреть имеющиеся склады магазина
-        commands.add(new WarehouseCreate(console));//Добавить новый склад
+        //commands.add(new WarehouseCreate(console));//Добавить новый склад
         //commands.add(new EditWarehouse(console));
         commands.add(new SaveWarehouses(console));//Сохранить магазин
         commands.add(new Quit(console));//Выйти из программы
 
 
         editWarehousesCommands = new ArrayList<>();
-        editWarehousesCommands.add((new AddToyToWarehouse(console)));
-        editWarehousesCommands.add((new AddBookToWarehouse(console)));
+        editWarehousesCommands.add(new WarehouseCreate(console));//Добавить новый склад);
+        editWarehousesCommands.add(new AddToyToWarehouse(console));
+        editWarehousesCommands.add(new AddBookToWarehouse(console));
         editWarehousesCommands.add(new PrintWarehouse(console));
         editWarehousesCommands.add(new QuitMenu(console));
     }

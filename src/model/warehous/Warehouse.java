@@ -1,6 +1,8 @@
 package src.model.warehous;
 
 import src.model.Product;
+import src.model.warehouses.Warehouses;
+
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
@@ -10,11 +12,13 @@ public class Warehouse<E extends Product> implements InterfaceWarehouse, Seriali
     WarehouseType type;
     private List<E> products;
     private static int iD = 5555;
+    private Warehouses warehouses = new Warehouses<>();
 
     public Warehouse(String name, WarehouseType type) {
         this.name = name;
         this.type = type;
         iD += 1;
+        warehouses.addWarehouse(this);
     }
 
     public boolean addProduct(E product) {
