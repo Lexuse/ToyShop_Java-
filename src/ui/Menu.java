@@ -24,11 +24,13 @@ public class Menu {
         editWarehousesCommands.add((new AddToyToWarehouse(console)));
         editWarehousesCommands.add((new AddBookToWarehouse(console)));
         //editWarehousesCommands.add(new PrintWarehouse(console));
+        editWarehousesCommands.add(new QuitMenu(console));
     }
 
     public int getSizeMainCommands() {
         return commands.size();
     }
+    public int getSizeEditWarehousesCommands() {return editWarehousesCommands.size();    }
     public boolean executeMainCommands(int nMenu) {
         return commands.get(nMenu - 1).executeCommand();
     }

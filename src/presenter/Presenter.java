@@ -6,6 +6,8 @@ import src.model.goods.toy.TypeOfToy;
 import src.model.warehous.WarehouseType;
 import src.ui.View;
 
+import java.util.List;
+
 public class Presenter {
     private View view;
     private Service service;
@@ -56,5 +58,9 @@ public class Presenter {
 
     public String getShopList(){
         return  service.getShopsList();
+    }
+
+    public List<String> getTypeOfToy(){
+    return TypeOfToy.getType();
     }
 }

@@ -1,8 +1,11 @@
 package src.ui;
 
+import src.model.goods.toy.Toy;
+import src.model.goods.toy.TypeOfToy;
 import src.model.warehous.WarehouseType;
 import src.presenter.Presenter;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Console implements  View{
@@ -86,7 +89,20 @@ public class Console implements  View{
     }
 
     public boolean reqPrintWarehouses(){
-        return presenter.printWarehouses();
+        presenter.printWarehouses();
+        print(menu.printEditWarehouse());
+        String nMenuStr = scan();
+        if (isCanBeInt(nMenuStr)) {
+            int nMenu = Integer.parseInt(nMenuStr);
+            if (0 < nMenu && nMenu <= menu.getSizeEditWarehousesCommands()) {
+                return menu.executeEditTreeCommands(nMenu);
+            } else {
+                print("Некорректный ввод");
+            }
+        } else {
+            print("вводите цифры обозначающие пункты меню");
+        }
+        return true;
     }
 
     public void reqShopList(){
@@ -117,5 +133,42 @@ public class Console implements  View{
         return type;
     }
 
+    public boolean addToy(){
+        String nameOfWarehouse = reqNameOfWarehouse();
+        String type = reqTypeOfToy();
+        TypeOfToy t = TypeOfToy.valueOf(type);
+        String name = reqNameOfToy();
+        int weightWin = reqChanceToWin();
+        presenter.addToy(t, name, weightWin, nameOfWarehouse);
+        return true;
+    }
 
+    private String reqTypeOfToy(){
+        List<String> typeOfToy = presenter.getTypeOfToy();
+        StringBuilder result = new StringBuilder();
+        for (String type : typeOfToy){
+            result.append(type);
+        }
+        print(result.toString());
+        print("Укажите тип игрушки из списка возможных \n");
+        return scan();
+    }
+
+    private String reqNameOfToy(){
+        print("Укажите название игрушки \n");
+        return scan();
+    }
+
+    private int reqChanceToWin (){
+        print("Укажите шанс выигрыша от 0 до 99 \n");
+        String chance = scan();
+        int resultOut = 0;
+        if (isCanBeInt(chance)){
+            resultOut = Integer.parseInt(chance);
+            if (resultOut >=0 && resultOut <= 99){
+                return resultOut;
+            }else print("Введите число от 0 до 99!");
+            reqChanceToWin();
+        }return resultOut;
+    }
 }

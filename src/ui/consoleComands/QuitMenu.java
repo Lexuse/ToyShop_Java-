@@ -10,7 +10,6 @@ public class QuitMenu extends Command{
 
     @Override
     public boolean executeCommand() {
-        //getConsole().
         return false;
     }
 }

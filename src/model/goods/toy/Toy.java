@@ -3,6 +3,7 @@ package src.model.goods.toy;
 import src.model.Product;
 import src.model.ProductType;
 import java.io.Serializable;
+import java.util.List;
 
 public class Toy implements Product, Serializable {
     private ProductType productType;

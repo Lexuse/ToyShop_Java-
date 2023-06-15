@@ -5,7 +5,7 @@ import src.ui.Console;
 public class AddBookToWarehouse extends Command{
     public AddBookToWarehouse(Console console){
         super(console);
-        descriptionCommand = "Добавить игрушку на склад";
+        descriptionCommand = "Добавить книгу на склад";
     }
 
     @Override
