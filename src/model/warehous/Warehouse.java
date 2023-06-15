@@ -37,6 +37,14 @@ public class Warehouse<E extends Product> implements InterfaceWarehouse, Seriali
     public  int getID() {return iD;}
     public List<E> getProducts() {return this.products;}
 
+    public String getProductsList(){
+        StringBuilder str = new StringBuilder();
+        if (products.size() != 0)
+        for(Product product : products){
+            str.append(product.toString());
+        }return str.toString();
+    }
+
     @Override
     public String toString(){
          return "Название склада: " + this.getName() + "\n" +

@@ -85,4 +85,8 @@ public class Service {
     public String getShopsList(){
         return fl.getShopsList();
     }
+
+    public String getProductsList(){
+        return warehouse.getProductsList();
+    }
 }

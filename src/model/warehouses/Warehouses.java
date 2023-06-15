@@ -15,8 +15,11 @@ public class Warehouses <E extends Warehouse> implements InterfaceWarehouses<E>,
 
     public Warehouses(){this.warehouses = new ArrayList<>();}
 
-    public List<E> getWarehouses(){return this.warehouses;}
-
+    public List<E> getWarehouses() {
+        if (warehouses.size() == 0) {
+            System.out.println("Склада нет");;
+        }return warehouses;
+    }
     public boolean addWarehouse(E warehouse){return this.getWarehouses().add(warehouse);}
 
     public String printWarehouses() {

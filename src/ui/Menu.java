@@ -23,7 +23,7 @@ public class Menu {
         editWarehousesCommands = new ArrayList<>();
         editWarehousesCommands.add((new AddToyToWarehouse(console)));
         editWarehousesCommands.add((new AddBookToWarehouse(console)));
-        //editWarehousesCommands.add(new PrintWarehouse(console));
+        editWarehousesCommands.add(new PrintWarehouse(console));
         editWarehousesCommands.add(new QuitMenu(console));
     }
 

@@ -110,7 +110,8 @@ public class Console implements  View{
     }
 
     public boolean reqPrintWarehouse(){
-        return true;
+         presenter.getProductsList();
+         return true;
     }
 
     public void reqShopList(){

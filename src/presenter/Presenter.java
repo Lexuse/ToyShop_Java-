@@ -63,4 +63,8 @@ public class Presenter {
     public List<String> getTypeOfToy(){
     return TypeOfToy.getType();
     }
+
+    public String getProductsList(){
+        return service.getProductsList();
+    }
 }
