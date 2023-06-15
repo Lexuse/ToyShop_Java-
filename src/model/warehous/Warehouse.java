@@ -4,6 +4,7 @@ import src.model.Product;
 import src.model.warehouses.Warehouses;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -19,9 +20,11 @@ public class Warehouse<E extends Product> implements InterfaceWarehouse, Seriali
         this.type = type;
         iD += 1;
         warehouses.addWarehouse(this);
+        this.products = new ArrayList<>();
     }
 
     public boolean addProduct(E product) {
+
         return  this.getProducts().add(product);
     }
 
