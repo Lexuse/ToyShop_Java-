@@ -70,7 +70,7 @@ public class Presenter {
     return TypeOfToy.getType();
     }
 
-    public String getProductsList(){
-        return service.getProductsList();
+    public String getProductsList(String nameOfWarehouse){
+        return service.getProductsList(nameOfWarehouse);
     }
 }

@@ -88,7 +88,12 @@ public class Service {
         return fl.getShopsList();
     }
 
-    public String getProductsList(){
-        return warehouse.getProductsList();
+    public String getProductsList(String nameOfWarehouse){
+        for (Warehouse war :this.warehouses)
+            if (war.getName().equals(nameOfWarehouse)){
+                return war.getProductsList();
+            }else System.out.println("CONSOLE: Склада с таким именем нет");
+        return null;
+//        return warehouse.getProductsList();
     }
 }

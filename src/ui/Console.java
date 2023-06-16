@@ -116,7 +116,8 @@ public class Console implements  View{
     }
 
     public boolean reqPrintWarehouse(){
-         presenter.getProductsList();
+         print("Какой склад показать?");
+         print(presenter.getProductsList(scan()));
          return true;
     }
 

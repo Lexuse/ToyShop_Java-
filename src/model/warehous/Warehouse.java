@@ -24,7 +24,7 @@ public class Warehouse<E extends Product> implements InterfaceWarehouse, Seriali
     }
 
     public boolean addProduct(E product) {
-
+        System.out.println("CONSOLE: Вызван метод добавления продукта в складе (Warehouse)");;
         return  this.getProducts().add(product);
     }
 
@@ -45,11 +45,14 @@ public class Warehouse<E extends Product> implements InterfaceWarehouse, Seriali
     public List<E> getProducts() {return this.products;}
 
     public String getProductsList(){
-        StringBuilder str = new StringBuilder();
-        if (products.size() != 0)
-        for(Product product : products){
-            str.append(product.toString());
-        }return str.toString();
+        //String result = "";
+        if (products.size() != 0) {
+            for (Product product : products) {
+//                System.out.println("CONSOLE: (Warehouse) " + product.toString());
+//                String result = product.toString();
+                return product.toString();
+            }
+        }return null;
     }
 
     @Override
