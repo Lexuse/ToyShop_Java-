@@ -84,13 +84,13 @@ public class Console implements  View{
 
     public boolean reqLoadShops(){
         String answer = presenter.getShopList();
-        if(!answer.equals("Пока не создано ни одного магазина.")){
-            print("Введите имя магазина для загрузки");
+        if(!answer.equals("Файл со списком магазинов пока отсутствует, сохраните магазин. \n")){
+            //print("Введите имя магазина для загрузки");
             System.out.println(presenter.getShopList());
             return presenter.load(scan());
         }else print("Список магазинов пуст!\n" +
-                "Для продолжения работы нужно сначала создать магазин\n");
-        return false;
+                "Для продолжения работы нужно сначала создать магазин.\n");
+        return true;
     }
 
     public boolean reqPrintWarehouses() {

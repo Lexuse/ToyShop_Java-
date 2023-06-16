@@ -47,10 +47,9 @@ public class FileManager<E> implements Writable<E>{
                 while ((c = reader.read())!=-1){
                     result.append((char) c);
                 }
-                //System.out.println(result.toString());
                 return result.toString();
         } catch (FileNotFoundException e) {
-            return "Пока не создано ни одного магазина. \n";
+            return "Файл со списком магазинов пока отсутствует, сохраните магазин. \n";
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
