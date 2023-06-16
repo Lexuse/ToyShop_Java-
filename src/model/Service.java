@@ -18,7 +18,8 @@ public class Service {
     FileManager fl = new FileManager();
 
     public Service() {
-        new Warehouses();
+        this(new Warehouses());
+        // new Warehouses();
     }
 
     public Service(InterfaceWarehouses warehouses) {
@@ -26,7 +27,7 @@ public class Service {
     }
 
     public InterfaceWarehouses<Warehouse> getWarehouses() {
-        return new Warehouses();
+        return this.warehouses;
     }
 
     //Добавить склад
@@ -40,6 +41,7 @@ public class Service {
         if (warehouses != null){
             for (Warehouse war :warehouses){
                 if(nameOfWarehouse.equals(war.getName()) && war.getType().equals(WarehouseType.Toys)){
+                    System.out.println("CONSOLE: Игрушка добавлена");
                     return war.addProduct(toy);
                 }
             }
