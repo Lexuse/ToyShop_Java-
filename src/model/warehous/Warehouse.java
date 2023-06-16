@@ -45,14 +45,15 @@ public class Warehouse<E extends Product> implements InterfaceWarehouse, Seriali
     public List<E> getProducts() {return this.products;}
 
     public String getProductsList(){
-        //String result = "";
+        String result = "";
         if (products.size() != 0) {
+
+            int number = 0;
             for (Product product : products) {
-//                System.out.println("CONSOLE: (Warehouse) " + product.toString());
-//                String result = product.toString();
-                return product.toString();
+                number++;
+                result += number + ": " + product.toString() + "\n";
             }
-        }return null;
+        }return result;
     }
 
     @Override
