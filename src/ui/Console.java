@@ -84,7 +84,7 @@ public class Console implements  View{
 
     public boolean reqLoadShops(){
         String answer = presenter.getShopList();
-        if(answer.equals("Пока не создано ни одного магазина.")){
+        if(!answer.equals("Пока не создано ни одного магазина.")){
             print("Введите имя магазина для загрузки");
             System.out.println(presenter.getShopList());
             return presenter.load(scan());

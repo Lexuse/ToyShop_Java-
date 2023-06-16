@@ -26,7 +26,7 @@ public class Service {
     }
 
     public InterfaceWarehouses<Warehouse> getWarehouses() {
-        return this.warehouses;
+        return new Warehouses();
     }
 
     //Добавить склад

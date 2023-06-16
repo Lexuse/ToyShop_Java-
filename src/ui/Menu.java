@@ -22,10 +22,10 @@ public class Menu {
 
         editWarehousesCommands = new ArrayList<>();
         editWarehousesCommands.add(new WarehouseCreate(console));//Добавить новый склад);
-        editWarehousesCommands.add(new AddToyToWarehouse(console));
-        editWarehousesCommands.add(new AddBookToWarehouse(console));
-        editWarehousesCommands.add(new PrintWarehouse(console));
-        editWarehousesCommands.add(new QuitMenu(console));
+        editWarehousesCommands.add(new AddToyToWarehouse(console));//Добавить игрушку на склад
+        editWarehousesCommands.add(new AddBookToWarehouse(console));//Добавить книгу на склад
+        editWarehousesCommands.add(new PrintWarehouse(console));//Распечатать содержимое склада
+        editWarehousesCommands.add(new QuitMenu(console));//Покинуть пункт меню
     }
 
     public int getSizeMainCommands() {
