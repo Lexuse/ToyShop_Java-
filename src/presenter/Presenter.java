@@ -31,8 +31,14 @@ public class Presenter {
     }
 
     public boolean printWarehouses(){
-        view.print(service.printWarehouses());
-        return true;
+        try {
+            view.print(service.printWarehouses());
+            return true;
+        }catch (NullPointerException ex){
+            return false;
+        }
+
+
     }
 
     public boolean printToyWarehouses(){

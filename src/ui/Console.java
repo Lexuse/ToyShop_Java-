@@ -84,30 +84,35 @@ public class Console implements  View{
 
     public boolean reqLoadShops(){
         String answer = presenter.getShopList();
-        if(!answer.equals("Пока не создано ни одного магазина.")){
+        if(answer.equals("Пока не создано ни одного магазина.")){
             print("Введите имя магазина для загрузки");
             System.out.println(presenter.getShopList());
             return presenter.load(scan());
-        }else print("Список магазинов пуст! \n");
+        }else print("Список магазинов пуст!\n" +
+                "Для продолжения работы нужно сначала создать магазин\n");
         return false;
     }
 
-    public boolean reqPrintWarehouses(){
-        //if(presenter.)
-        presenter.printWarehouses();
-        print(menu.printEditWarehouse());
-        String nMenuStr = scan();
-        if (isCanBeInt(nMenuStr)) {
-            int nMenu = Integer.parseInt(nMenuStr);
-            if (0 < nMenu && nMenu <= menu.getSizeEditWarehousesCommands()) {
-                return menu.executeEditTreeCommands(nMenu);
-            } else {
-                print("Некорректный ввод");
-            }
+    public boolean reqPrintWarehouses() {
+        if (!(presenter.printWarehouses())) {
+            print("Нет складов, или магазин не загружен!\n" +
+                    "Сначала загрузите магазин, в котором имеются склады.\n");
         } else {
-            print("вводите цифры обозначающие пункты меню");
-        }
-        return true;
+            presenter.printWarehouses();
+            print(menu.printEditWarehouse());
+            String nMenuStr = scan();
+            if (isCanBeInt(nMenuStr)) {
+                int nMenu = Integer.parseInt(nMenuStr);
+                if (0 < nMenu && nMenu <= menu.getSizeEditWarehousesCommands()) {
+                    return menu.executeEditTreeCommands(nMenu);
+                } else {
+                    print("Некорректный ввод");
+                }
+            } else {
+                print("вводите цифры обозначающие пункты меню");
+            }
+
+        }return true;
     }
 
     public boolean reqPrintWarehouse(){

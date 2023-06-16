@@ -10,21 +10,21 @@ import src.model.warehous.WarehouseType;
 import src.model.warehouses.InterfaceWarehouses;
 import src.model.warehouses.Warehouses;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Service {
 
     private Warehouse<Product> warehouse;
+
     private InterfaceWarehouses<Warehouse> warehouses;
     FileManager fl = new FileManager();
 
     public Service() {
-        this(new Warehouses<>());
+        new Warehouses();
     }
+
     public Service(InterfaceWarehouses warehouses) {
         this.warehouses = warehouses;
     }
+
     public InterfaceWarehouses<Warehouse> getWarehouses() {
         return this.warehouses;
     }
