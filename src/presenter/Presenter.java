@@ -66,9 +66,6 @@ public class Presenter {
         return  service.getShopsList();
     }
 
-    public List<String> getTypeOfToy(){
-    return TypeOfToy.getType();
-    }
 
     public String getProductsList(String nameOfWarehouse){
         return service.getProductsList(nameOfWarehouse);

@@ -33,7 +33,7 @@ public class Warehouses <E extends Warehouse> implements InterfaceWarehouses<E>,
         List<E> toyWarehouses = new ArrayList<>();
         if(warehouses.size() != 0) {
             for (E war : warehouses) {
-                if (war.getType() == WarehouseType.Toys) {
+                if (war.getType() == WarehouseType.ИГРУШКИ) {
                     toyWarehouses.add(war);
                 }
             }return toyWarehouses;
@@ -44,7 +44,7 @@ public class Warehouses <E extends Warehouse> implements InterfaceWarehouses<E>,
         List<E> bookWarehouses  = new ArrayList<>();
         if(warehouses.size() != 0) {
             for (E war : warehouses) {
-                if (war.getType() == WarehouseType.Books) {
+                if (war.getType() == WarehouseType.КНИГИ) {
                     bookWarehouses.add(war);
                 }
             }return bookWarehouses;

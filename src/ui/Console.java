@@ -5,8 +5,9 @@ import src.model.goods.toy.TypeOfToy;
 import src.model.warehous.WarehouseType;
 import src.presenter.Presenter;
 
-import java.util.List;
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.SortedMap;
 
 public class Console implements  View{
     private Presenter presenter;
@@ -32,19 +33,6 @@ public class Console implements  View{
         }
     }
 
-    @Override
-    public void print(String text) {
-        System.out.println(text);
-
-    }
-
-    public String scan(){return scanner.nextLine();}
-    private boolean isCanBeInt(String text) {
-        return text.matches("[0-9]+");
-    }
-    public void quit() {isWork = false;}
-
-
     private void mainRequest() {
         print(menu.printMainCommands());
         String nMenuStr = scan();
@@ -60,19 +48,21 @@ public class Console implements  View{
         }
     }
 
-    public void reqCreateWarehouse() {
+    public boolean reqCreateWarehouse() {
+        print("Режим создания нового склада!");
+        print("Для создания доступны следующие типы:");
+        print(WarehouseType.String());
+        print("Укажите желаемый тип: (указывается вводом с клавиатуры текста)");
+        WarehouseType warehouseType =  reqTypeOfWarehouse(scan());
         String warehouseName = reqNameOfWarehouse();
-        String typeIn = reqTypeOfWarehouse();
-        WarehouseType type = WarehouseType.Books;
-        if (typeIn.equals("Toys")){
-            type = WarehouseType.Toys;
+        try {
+            presenter.addWarehouse(warehouseName, warehouseType);
+        }catch (NullPointerException ex) {
+            print("Укажите пожалуйста правильный тип склада");
+            reqCreateWarehouse();
         }
-        if (presenter.addWarehouse(warehouseName, type)){
-            print("Склад успешно добавлен");
-        }else print("Не удалось добавить склад");
+        return true;
     }
-
-
 
     public boolean reqSave(){
         print("Для сохранения введите имя магазина");
@@ -122,31 +112,6 @@ public class Console implements  View{
         System.out.println(presenter.getShopList());
     }
 
-
-
-    //Запрос имени склада
-    public String reqNameOfWarehouse(){
-        print("Введите название склада: ");
-        return scan();
-    }
-    public String reqTypeOfWarehouse() {
-        String result = "";
-        print("Укажите тип склада:");
-        print("1: Игрушки\n2: Книги");
-        String nMenuStr = scan();
-        if (isCanBeInt(nMenuStr)) {
-            int nMenu = Integer.parseInt(nMenuStr);
-            if (nMenu > 0 && nMenu <=2) {
-                if (nMenu == 1) {
-                    result = "Toys";
-                }
-            }else if (nMenu ==2) {
-                    result = "Books";
-            } else print("Некорректный ввод!");
-        }
-        return result;
-    }
-
     public boolean reqAddToy(){
         print("Выберите существующий склад с игрушками для добавления экземпляра:");
         String nameOfWarehouse = reqNameOfWarehouse();
@@ -161,7 +126,7 @@ public class Console implements  View{
     }
 
     public boolean reqAddBookToWarehouse() {
-        print("Выберите существующий склад с книгами для добавления экземпляра");
+        print("Выберите существующий склад с книгами для добавления экземпляра. Выбор происходит методом ввода с клавиатуры.");
         String nameOfWarehouse = reqNameOfWarehouse();
         print("Жанр книги:");
         print(TypeOfBook.String());
@@ -175,30 +140,28 @@ public class Console implements  View{
         return presenter.addBook(bookGenre, name, author, weightWin, nameOfWarehouse);
     }
 
-    private static TypeOfBook reqTypeOfBook(String name) {
+    private  WarehouseType reqTypeOfWarehouse(String name){
+        return getEnumFromString(WarehouseType.class, name);
+    }
+
+    private  TypeOfBook reqTypeOfBook(String name) {
         return getEnumFromString(TypeOfBook.class, name);
     }
 
-    private static TypeOfToy reqTypeOfToy(String name){
+    private  TypeOfToy reqTypeOfToy(String name){
         return getEnumFromString(TypeOfToy.class, name);
     }
 
-    public static <T extends Enum<T>> T getEnumFromString(Class<T> c, String string) {
+    public  <T extends Enum<T>> T getEnumFromString(Class<T> c, String string) {
         if( c != null && string != null ) {
             try {
                 return Enum.valueOf(c, string.trim().toUpperCase());
             } catch(IllegalArgumentException ex) {
             }
         }
+        print("Вы ввели несуществующий тип склада. Возврат в основное меню!\n");
+        mainRequest();
         return null;
-    }
-
-
-
-
-    private String reqNameOfToy(){
-        print("Укажите название игрушки \n");
-        return scan();
     }
 
     private int reqChanceToWin (){
@@ -212,5 +175,24 @@ public class Console implements  View{
             }else print("Введите число от 0 до 99!");
             reqChanceToWin();
         }return resultOut;
+    }
+
+    //Запрос имени склада
+    public String reqNameOfWarehouse(){
+        print("Введите название склада: ");
+        return scan();
+    }
+
+    public String scan(){return scanner.nextLine();}
+
+    private boolean isCanBeInt(String text) {
+        return text.matches("[0-9]+");
+    }
+
+    public void quit() {isWork = false;}
+
+    @Override
+    public void print(String text) {
+        System.out.println(text);
     }
 }

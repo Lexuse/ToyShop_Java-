@@ -40,7 +40,7 @@ public class Service {
         Product toy = new Toy(type, name ,weightWin);
         if (warehouses != null){
             for (Warehouse war :warehouses){
-                if(nameOfWarehouse.equals(war.getName()) && war.getType().equals(WarehouseType.Toys)){
+                if(nameOfWarehouse.equals(war.getName()) && war.getType().equals(WarehouseType.ИГРУШКИ)){
                     System.out.println("CONSOLE: Игрушка добавлена");
                     return war.addProduct(toy);
                 }
@@ -52,7 +52,7 @@ public class Service {
         Product book = new Book(type, name, author, weighWin);
         if (warehouses != null){
             for (Warehouse war :warehouses){
-                if(nameOfWarehouse.equals(war.getName()) && war.getType().equals(WarehouseType.Books)){
+                if(nameOfWarehouse.equals(war.getName()) && war.getType().equals(WarehouseType.КНИГИ)){
                     return war.addProduct(book);
                 }
             }
