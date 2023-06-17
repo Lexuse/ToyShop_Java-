@@ -5,10 +5,8 @@ import src.model.goods.toy.TypeOfToy;
 import src.model.warehous.WarehouseType;
 import src.presenter.Presenter;
 
-import java.io.IOException;
 import java.util.Locale;
 import java.util.Scanner;
-import java.util.SortedMap;
 
 public class Console implements  View{
     private Presenter presenter;

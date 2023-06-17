@@ -44,7 +44,11 @@ public class Menu {
 
     public String printMainCommands() {
         StringBuilder result = new StringBuilder();
-        result.append("Выберите операцию над Магазинами:\n");
+        result.append("***************************************************************************" + "\n" +
+                "Добро пожаловать в программу 'Менеджер магазинов детских товаров'!\n" +
+                "Вам доступно создание и загрузка магазинов а также менеджмент их складов.\n" +
+                "Загрузите магазин или создайте свой, добавив товары и склады\n" +
+                "***************************************************************************" + "\n");
         for (int i = 0; i < commands.size(); i++) {
             result.append(String.format("%d. ", i + 1));
             result.append(commands.get(i).getDescriptionCommand() + "\n");
