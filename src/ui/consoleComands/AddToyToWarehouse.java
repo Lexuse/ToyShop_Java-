@@ -10,7 +10,7 @@ public class AddToyToWarehouse extends Command{
 
     @Override
     public boolean executeCommand() {
-        getConsole().addToy();
+        getConsole().reqAddToy();
         return false;
     }
 

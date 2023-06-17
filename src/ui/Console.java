@@ -1,6 +1,6 @@
 package src.ui;
 
-import src.model.goods.toy.Toy;
+import src.model.goods.books.TypeOfBook;
 import src.model.goods.toy.TypeOfToy;
 import src.model.warehous.WarehouseType;
 import src.presenter.Presenter;
@@ -72,10 +72,7 @@ public class Console implements  View{
         }else print("Не удалось добавить склад");
     }
 
-    public void reqAddBookToWarehouse() {
-        print("Выберите существующий склад игрушек для добавления товара");
 
-    }
 
     public boolean reqSave(){
         print("Для сохранения введите имя магазина");
@@ -150,27 +147,54 @@ public class Console implements  View{
         return result;
     }
 
-    public boolean addToy(){
+    public boolean reqAddToy(){
+        print("Выберите существующий склад с игрушками для добавления экземпляра:");
         String nameOfWarehouse = reqNameOfWarehouse();
-        String type = reqTypeOfToy();
-        TypeOfToy t = TypeOfToy.valueOf(type);
-        String name = reqNameOfToy();
+        print("Тип игрушки:");
+        print(TypeOfToy.String());
+        TypeOfToy type = reqTypeOfToy(scan());
+        print("имя игрушки:");
+        String name = scan();
+        print("Шанс выиграть игрушку:");
         int weightWin = reqChanceToWin();
-        presenter.addToy(t, name, weightWin, nameOfWarehouse);
-        return true;
+        return presenter.addToy(type, name, weightWin, nameOfWarehouse);
     }
 
-    private String reqTypeOfToy(){
-        List<String> typeOfToy = presenter.getTypeOfToy();
-        StringBuilder result = new StringBuilder();
-        for (String type : typeOfToy){
-            result.append(type);
-            result.append("\n");
-        }
-        print(result.toString());
-        print("Укажите тип игрушки из списка возможных \n");
-        return scan();
+    public boolean reqAddBookToWarehouse() {
+        print("Выберите существующий склад с книгами для добавления экземпляра");
+        String nameOfWarehouse = reqNameOfWarehouse();
+        print("Жанр книги:");
+        print(TypeOfBook.String());
+        TypeOfBook bookGenre = reqTypeOfBook(scan());
+        print("Автор книги:");
+        String author = scan();
+        print("Название книги:");
+        String name = scan();
+        print("Шанс выиграть книгу:");
+        int weightWin = reqChanceToWin();
+        return presenter.addBook(bookGenre, name, author, weightWin, nameOfWarehouse);
     }
+
+    private static TypeOfBook reqTypeOfBook(String name) {
+        return getEnumFromString(TypeOfBook.class, name);
+    }
+
+    private static TypeOfToy reqTypeOfToy(String name){
+        return getEnumFromString(TypeOfToy.class, name);
+    }
+
+    public static <T extends Enum<T>> T getEnumFromString(Class<T> c, String string) {
+        if( c != null && string != null ) {
+            try {
+                return Enum.valueOf(c, string.trim().toUpperCase());
+            } catch(IllegalArgumentException ex) {
+            }
+        }
+        return null;
+    }
+
+
+
 
     private String reqNameOfToy(){
         print("Укажите название игрушки \n");

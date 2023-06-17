@@ -21,7 +21,7 @@ public class Toy implements Product, Serializable {
             this.weightWin = weightWin;
         }
         else this.weightWin = 50;
-        serialNumber += 1;
+        this.serialNumber += 1;
     }
 
     public int getSerialNumber() {
