@@ -66,7 +66,7 @@ public class Console implements  View{
 
     public boolean reqLoadShops(){
         String answer = presenter.getShopList();
-        if(!answer.equals("Файл со списком магазинов пока отсутствует, сохраните магазин. \n")){
+        if(!answer.equals("Пока не сохранено ни одного магазина \n")){
             System.out.println(presenter.getShopList());
             return presenter.load(scan());
         }else print("""

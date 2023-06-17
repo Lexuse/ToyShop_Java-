@@ -1,6 +1,8 @@
 package src.model.fileManager;
 
 import java.io.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class FileManager<E> implements Writable<E>{
 
@@ -23,34 +25,16 @@ public class FileManager<E> implements Writable<E>{
             return result;
         }
 
-//    private void saveShopName(String name){
-//        try (FileWriter writer = new FileWriter("src/model/shops/Shops.txt", true))
-//        {
-//         writer.write(name);
-//         writer.append('\n');
-//         writer.flush();
-//            System.out.println("Сохранение");
-//        } catch (IOException e) {
-//            System.out.println(e.getMessage());;
-//        }
-//    }
-
     public String getShopsList(){
-        StringBuilder result = new StringBuilder();
-        try(FileReader reader = new FileReader("src/model/shops/Shops.txt"))
-            {
-                int c;
-                while ((c = reader.read())!=-1){
-                    result.append((char) c);
-                }
-                return result.toString();
-        } catch (FileNotFoundException e) {
-            return "Файл со списком магазинов пока отсутствует, сохраните магазин. \n";
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        File dir = new File(filePath);
+        File[] arrFiles = dir.listFiles();
+        List<File> list = Arrays.asList(arrFiles);
+        StringBuilder str = new StringBuilder();
+        if(list.size() != 0){
+            str.append("Количество сохраненных магазинов: ").append(list.size()).append("\n");
+            for (File file : list){
+                str.append(file.getName()).append("\n");
+            }return str.toString();
+        }else return "Пока не сохранено ни одного магазина \n";
     }
-
-
-
 }
