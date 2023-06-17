@@ -5,16 +5,16 @@ import src.model.ProductType;
 import java.io.Serializable;
 
 public class Book implements Product, Serializable {
-    private ProductType productType;
-    private TypeOfBook type;
-    private String name;
-    private String author;
-    private int weightWin;
+    private final ProductType productType;
+    private final TypeOfBook type;
+    private final String name;
+    private final String author;
+    private final int weightWin;
     private static int serialNumber = 2222;
 
 
     public Book(TypeOfBook type ,String name, String author, int weightWin) {
-        this.productType =ProductType.Books;
+        this.productType =ProductType.BOOKS;
         this.type = type;
         this.name = name;
         this.author = author;

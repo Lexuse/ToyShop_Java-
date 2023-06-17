@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Menu {
-    private List<Command> commands;
-    private List<Command> editWarehousesCommands;
+    private final List<Command> commands;
+    private final List<Command> editWarehousesCommands;
     private int countAppearance = 0;
 
     public Menu(Console console){
@@ -45,15 +45,17 @@ public class Menu {
         countAppearance++;
         StringBuilder result = new StringBuilder();
         if (countAppearance ==1){
-            result.append("***************************************************************************" + "\n" +
-                    "Добро пожаловать в программу 'Менеджер магазинов детских товаров'!\n" +
-                    "Вам доступно создание и загрузка магазинов а также менеджмент их складов.\n" +
-                    "Загрузите магазин или создайте свой, добавив товары и склады\n" +
-                    "***************************************************************************" + "\n");
+            result.append("""
+                    *************************************************************************
+                    Добро пожаловать в программу 'Менеджер магазинов детских товаров'!
+                    Вам доступно создание и загрузка магазинов а также менеджмент их складов.
+                    Загрузите магазин или создайте свой, добавив товары и склады
+                    *************************************************************************
+                    """);
         }
         for (int i = 0; i < commands.size(); i++) {
             result.append(String.format("%d. ", i + 1));
-            result.append(commands.get(i).getDescriptionCommand() + "\n");
+            result.append(commands.get(i).getDescriptionCommand()).append("\n");
         }
         return result.toString();
     }
@@ -63,7 +65,7 @@ public class Menu {
         result.append("Введите что хотите сделать со складом:\n");
         for (int i = 0; i < editWarehousesCommands.size(); i++) {
             result.append(String.format("%d. ", i + 1));
-            result.append(editWarehousesCommands.get(i).getDescriptionCommand() + "\n");
+            result.append(editWarehousesCommands.get(i).getDescriptionCommand()).append("\n");
         }
         return result.toString();
     }

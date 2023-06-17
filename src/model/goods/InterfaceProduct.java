@@ -17,9 +17,9 @@ public interface InterfaceProduct {
     }
 
     default String getTypeOfProduct(){
-        if (this.getProductType().equals(getProductType().Toys)){
+        if (this.getProductType().equals(getProductType().TOYS)){
             return this.print() + "Игрушка. ";
-        }else if (this.getProductType().equals(getProductType().Books)){
+        }else if (this.getProductType().equals(getProductType().BOOKS)){
             return this.print() + "Книга. ";
         }else return  "Тип товара не указан";
     }

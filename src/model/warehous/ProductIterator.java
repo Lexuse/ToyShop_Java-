@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ProductIterator<E extends Product> implements Iterator {
     private int index;
-    private List<E> products;
+    private final List<E> products;
 
     public ProductIterator(List<E> products) {
         this.products = products;

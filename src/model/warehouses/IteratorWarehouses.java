@@ -5,7 +5,7 @@ import java.util.List;
 
 public class IteratorWarehouses<E> implements Iterator<E> {
     private int index;
-    private List<E> warehouses;
+    private final List<E> warehouses;
 
     public IteratorWarehouses(List<E> warehouses) {
         this.warehouses = warehouses;

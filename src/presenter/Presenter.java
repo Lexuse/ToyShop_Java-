@@ -9,7 +9,7 @@ import src.ui.View;
 import java.util.List;
 
 public class Presenter {
-    private View view;
+    private final View view;
     private Service service;
 
     public Presenter(View view, Service service) {

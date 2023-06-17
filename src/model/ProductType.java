@@ -1,3 +1,3 @@
 package src.model;
 
-public enum ProductType {Toys, Books}
+public enum ProductType {TOYS, BOOKS}

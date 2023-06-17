@@ -12,9 +12,7 @@ import src.model.warehouses.Warehouses;
 
 public class Service {
 
-    private Warehouse<Product> warehouse;
-
-    private InterfaceWarehouses<Warehouse> warehouses;
+    private final InterfaceWarehouses<Warehouse> warehouses;
     FileManager fl = new FileManager();
 
     public Service() {
@@ -31,7 +29,7 @@ public class Service {
 
     //Добавить склад
     public boolean addWarehouse(String name, WarehouseType type){
-        warehouse = new  Warehouse<Product>(name, type);
+        Warehouse<Product> warehouse = new Warehouse<Product>(name, type);
         return this.getWarehouses().addWarehouse(warehouse);
     }
 

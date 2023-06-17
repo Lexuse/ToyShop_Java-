@@ -10,9 +10,9 @@ import java.util.Scanner;
 
 public class Console implements  View{
     private Presenter presenter;
-    private Scanner scanner;
+    private final Scanner scanner;
     private boolean isWork;
-    private Menu menu;
+    private final Menu menu;
 
     public Console() {
         scanner = new Scanner(System.in);
@@ -66,20 +66,22 @@ public class Console implements  View{
     public boolean reqLoadShops(){
         String answer = presenter.getShopList();
         if(!answer.equals("Файл со списком магазинов пока отсутствует, сохраните магазин. \n")){
-            //print("Введите имя магазина для загрузки");
             System.out.println(presenter.getShopList());
             return presenter.load(scan());
-        }else print("Список магазинов пуст!\n" +
-                "Для продолжения работы нужно сначала создать магазин.\n");
+        }else print("""
+                Список магазинов пуст!
+                Для продолжения работы нужно сначала создать магазин.
+                """);
         return true;
     }
 
     public boolean reqPrintWarehouses() {
         if (!(presenter.printWarehouses())) {
-            print("Нет складов, или магазин не загружен!\n" +
-                    "Сначала загрузите магазин, в котором имеются склады.\n");
+            print("""
+                    Нет складов, или магазин не загружен!
+                    Сначала загрузите магазин, в котором имеются склады.
+                    """);
         } else {
-            //presenter.printWarehouses();
             print(menu.printEditWarehouse());
             String nMenuStr = scan();
             if (isCanBeInt(nMenuStr)) {
@@ -155,9 +157,9 @@ public class Console implements  View{
             try {
                 return Enum.valueOf(c, string.trim().toUpperCase());
             } catch(IllegalArgumentException ex) {
+                print("Вы ввели несуществующий тип склада. Возврат в меню!\n");
             }
         }
-        print("Вы ввели несуществующий тип склада. Возврат в меню!\n");
         print(menu.printEditWarehouse());
         return null;
     }

@@ -16,7 +16,7 @@ public class PrizeFund <E extends Product> implements InterfaceWarehouse, Serial
     WarehouseType type = WarehouseType.ПРИЗОВОЙ;
     private List<E> products;
     private static int iD = 2222;
-    private Warehouses<Warehouse> warehouses = new Warehouses<>();
+    private final Warehouses<Warehouse> warehouses = new Warehouses<>();
 
     public PrizeFund(){
         iD++;

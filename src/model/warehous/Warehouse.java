@@ -13,12 +13,12 @@ public class Warehouse<E extends Product> implements InterfaceWarehouse, Seriali
     WarehouseType type;
     private final List<E> products;
     private static int iD = 5555;
-    private Warehouses<Warehouse> warehouses = new Warehouses<>();
 
     public Warehouse(String name, WarehouseType type) {
         this.name = name;
         this.type = type;
         iD += 1;
+        Warehouses<Warehouse> warehouses = new Warehouses<>();
         warehouses.addWarehouse(this);
         this.products = new ArrayList<>();
     }
@@ -45,14 +45,14 @@ public class Warehouse<E extends Product> implements InterfaceWarehouse, Seriali
     public List<E> getProducts() {return this.products;}
 
     public String getProductsList(){
-        String result = "";
+        StringBuilder result = new StringBuilder();
         if (products.size() != 0) {
             int number = 0;
             for (Product product : products) {
                 number++;
-                result += number + ": " + product.toString() + "\n";
+                result.append(number).append(": ").append(product.toString()).append("\n");
             }
-        }return result;
+        }return result.toString();
     }
 
     @Override
