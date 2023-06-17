@@ -55,13 +55,7 @@ public class Console implements  View{
         print("Укажите желаемый тип: (указывается вводом с клавиатуры текста)");
         WarehouseType warehouseType =  reqTypeOfWarehouse(scan());
         String warehouseName = reqNameOfWarehouse();
-        try {
-            presenter.addWarehouse(warehouseName, warehouseType);
-        }catch (NullPointerException ex) {
-            print("Укажите пожалуйста правильный тип склада");
-            reqCreateWarehouse();
-        }
-        return true;
+        return presenter.addWarehouse(warehouseName, warehouseType);
     }
 
     public boolean reqSave(){
@@ -159,8 +153,9 @@ public class Console implements  View{
             } catch(IllegalArgumentException ex) {
             }
         }
-        print("Вы ввели несуществующий тип склада. Возврат в основное меню!\n");
-        mainRequest();
+        print("Вы ввели несуществующий тип склада. Возврат в меню!\n");
+        print(menu.printEditWarehouse());
+        //mainRequest();
         return null;
     }
 
