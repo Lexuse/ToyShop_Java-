@@ -12,7 +12,6 @@ public class FileManager<E> implements Writable<E>{
         FileOutputStream fileOutputStream = new FileOutputStream(filePath + fileName);
              ObjectOutputStream oos = new ObjectOutputStream(fileOutputStream);
             oos.writeObject(e);
-            saveShopName(fileName);
     }
 
     @Override
@@ -24,17 +23,17 @@ public class FileManager<E> implements Writable<E>{
             return result;
         }
 
-    private void saveShopName(String name){
-        try (FileWriter writer = new FileWriter("src/model/shops/Shops.txt", true))
-        {
-         writer.write(name);
-         writer.append('\n');
-         writer.flush();
-            System.out.println("Сохранение");
-        } catch (IOException e) {
-            System.out.println(e.getMessage());;
-        }
-    }
+//    private void saveShopName(String name){
+//        try (FileWriter writer = new FileWriter("src/model/shops/Shops.txt", true))
+//        {
+//         writer.write(name);
+//         writer.append('\n');
+//         writer.flush();
+//            System.out.println("Сохранение");
+//        } catch (IOException e) {
+//            System.out.println(e.getMessage());;
+//        }
+//    }
 
     public String getShopsList(){
         StringBuilder result = new StringBuilder();
