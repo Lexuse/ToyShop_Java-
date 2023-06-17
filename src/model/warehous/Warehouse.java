@@ -24,7 +24,7 @@ public class Warehouse<E extends Product> implements InterfaceWarehouse, Seriali
     }
 
     public boolean addProduct(E product) {
-        System.out.println("CONSOLE: Вызван метод добавления продукта в складе (Warehouse)");;
+        //System.out.println("CONSOLE: Вызван метод добавления продукта в складе (Warehouse)");;
         return  this.getProducts().add(product);
     }
 

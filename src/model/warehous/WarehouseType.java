@@ -2,9 +2,10 @@ package src.model.warehous;
 
 public enum WarehouseType {
     ИГРУШКИ,
-    КНИГИ;
+    КНИГИ,
+    ПРИЗОВОЙ;
 
     public static String String(){
-        return "1. Игрушки.  2. Книги.";
+        return "1. Игрушки.  2. Книги. 3.Призовой";
     }
 }
