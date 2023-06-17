@@ -6,6 +6,7 @@ import src.model.warehous.WarehouseType;
 import src.presenter.Presenter;
 
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Scanner;
 import java.util.SortedMap;
 
@@ -117,7 +118,11 @@ public class Console implements  View{
         String name = scan();
         print("Шанс выиграть игрушку:");
         int weightWin = reqChanceToWin();
-        return presenter.addToy(type, name, weightWin, nameOfWarehouse);
+        if (presenter.addToy(type, name, weightWin, nameOfWarehouse)) {
+            print(type.toString().toLowerCase(Locale.ROOT) + " '" + name + "'" + " успешно добавлено на склад " + nameOfWarehouse + "\n");
+        }
+
+        return true;
     }
 
     public boolean reqAddBookToWarehouse() {
@@ -156,7 +161,6 @@ public class Console implements  View{
         }
         print("Вы ввели несуществующий тип склада. Возврат в меню!\n");
         print(menu.printEditWarehouse());
-        //mainRequest();
         return null;
     }
 
