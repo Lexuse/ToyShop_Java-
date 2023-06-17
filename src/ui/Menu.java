@@ -2,6 +2,7 @@ package src.ui;
 
 import src.ui.consoleComands.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,13 +32,13 @@ public class Menu {
         return commands.size();
     }
     public int getSizeEditWarehousesCommands() {return editWarehousesCommands.size();    }
-    public boolean executeMainCommands(int nMenu) {
+    public boolean executeMainCommands(int nMenu) throws IOException {
         return commands.get(nMenu - 1).executeCommand();
     }
     public int editWarehousesCommands() {
         return editWarehousesCommands.size();
     }
-    public boolean executeEditTreeCommands(int nMenu) {
+    public boolean executeEditTreeCommands(int nMenu) throws IOException {
         return editWarehousesCommands.get(nMenu - 1).executeCommand();
     }
 

@@ -10,6 +10,8 @@ import src.model.warehous.WarehouseType;
 import src.model.warehouses.InterfaceWarehouses;
 import src.model.warehouses.Warehouses;
 
+import java.io.IOException;
+
 public class Service {
 
     private final InterfaceWarehouses<Warehouse> warehouses;
@@ -71,14 +73,20 @@ public class Service {
         return this.getBookWarehouses();
     }
 
-    public void save(String fileName){
+    public void save(String fileName) throws IOException {
         FileManager<Warehouses<Warehouse>> fileManager = new FileManager<>();
         this.getWarehouses().save(fileManager, fileName);
     }
 
     public  Warehouses<Warehouse> read (String fileName){
         FileManager<Warehouses> fileManager = new FileManager<>();
-        return fileManager.read(fileName);
+        try {
+            return fileManager.read(fileName);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public String getShopsList(){

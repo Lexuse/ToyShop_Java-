@@ -4,6 +4,7 @@ import src.model.fileManager.Writable;
 import src.model.warehous.Warehouse;
 import src.model.warehous.WarehouseType;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -66,7 +67,7 @@ public class Warehouses <E extends Warehouse> implements InterfaceWarehouses<E>,
     }
 
     @Override
-    public void save(Writable<Warehouses<E>> writable, String fileName) {
+    public void save(Writable<Warehouses<E>> writable, String fileName) throws IOException {
         writable.save(this, fileName);
 
     }

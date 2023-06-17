@@ -6,6 +6,7 @@ import src.model.goods.toy.TypeOfToy;
 import src.model.warehous.WarehouseType;
 import src.ui.View;
 
+import java.io.IOException;
 import java.util.List;
 
 public class Presenter {
@@ -62,7 +63,7 @@ public class Presenter {
         return true;
     }
 
-    public boolean save(String fileName){
+    public boolean save(String fileName) throws IOException {
         service.save(fileName);
         return true;
     }

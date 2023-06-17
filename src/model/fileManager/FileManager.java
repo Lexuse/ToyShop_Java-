@@ -4,28 +4,25 @@ import java.io.*;
 
 public class FileManager<E> implements Writable<E>{
 
+    String filePath = "src/model/fileManager/saves/";
 
     @Override
-    public void save(E e, String fileName) {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileName))) {
+
+    public void save(E e, String fileName) throws IOException {
+        FileOutputStream fileOutputStream = new FileOutputStream(filePath + fileName);
+             ObjectOutputStream oos = new ObjectOutputStream(fileOutputStream);
             oos.writeObject(e);
             saveShopName(fileName);
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
     }
 
     @Override
-    public E read(String fileName) {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fileName))) {
-            E result = (E)ois.readObject();
+    public E read(String fileName) throws IOException, ClassNotFoundException {
+        FileInputStream fileInputStream = new FileInputStream(filePath + fileName);
+        ObjectInputStream ois = new ObjectInputStream(fileInputStream);
+        E result = (E) ois.readObject();
             ois.close();
             return result;
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
         }
-        return null;
-    }
 
     private void saveShopName(String name){
         try (FileWriter writer = new FileWriter("src/model/shops/Shops.txt", true))
@@ -54,5 +51,7 @@ public class FileManager<E> implements Writable<E>{
             throw new RuntimeException(e);
         }
     }
+
+
 
 }

@@ -3,6 +3,7 @@ package src.model.warehouses;
 import src.model.fileManager.Writable;
 import src.model.warehous.Warehouse;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface InterfaceWarehouses <E extends Warehouse> extends Iterable<E>{
@@ -11,5 +12,5 @@ public interface InterfaceWarehouses <E extends Warehouse> extends Iterable<E>{
     List<E> getWarehouses();
     String printWarehouses();
     String printInfoAll();
-    void save(Writable<Warehouses<E>> writable, String fileName);
+    void save(Writable<Warehouses<E>> writable, String fileName) throws IOException;
 }

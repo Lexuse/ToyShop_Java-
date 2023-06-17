@@ -2,6 +2,8 @@ package src.ui.consoleComands;
 
 import src.ui.Console;
 
+import java.io.IOException;
+
 public abstract class Command {
 
     String descriptionCommand;
@@ -19,5 +21,5 @@ public abstract class Command {
         return console;
     }
 
-    public abstract boolean executeCommand();
+    public abstract boolean executeCommand() throws IOException;
 }

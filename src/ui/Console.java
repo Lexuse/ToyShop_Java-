@@ -5,6 +5,7 @@ import src.model.goods.toy.TypeOfToy;
 import src.model.warehous.WarehouseType;
 import src.presenter.Presenter;
 
+import java.io.IOException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -26,13 +27,13 @@ public class Console implements  View{
     }
 
     @Override
-    public void start(){
+    public void start() throws IOException {
         while (isWork){
             mainRequest();
         }
     }
 
-    private void mainRequest() {
+    private void mainRequest() throws IOException {
         print(menu.printMainCommands());
         String nMenuStr = scan();
         if (isCanBeInt(nMenuStr)) {
@@ -58,7 +59,7 @@ public class Console implements  View{
         return presenter.addWarehouse(warehouseName, warehouseType);
     }
 
-    public boolean reqSave(){
+    public boolean reqSave() throws IOException {
         print("Для сохранения введите имя магазина");
         return presenter.save(scan());
     }
@@ -75,7 +76,7 @@ public class Console implements  View{
         return true;
     }
 
-    public boolean reqPrintWarehouses() {
+    public boolean reqPrintWarehouses() throws IOException {
         if (!(presenter.printWarehouses())) {
             print("""
                     Нет складов, или магазин не загружен!
@@ -157,7 +158,7 @@ public class Console implements  View{
             try {
                 return Enum.valueOf(c, string.trim().toUpperCase());
             } catch(IllegalArgumentException ex) {
-                print("Вы ввели несуществующий тип склада. Возврат в меню!\n");
+                print("Вы ввели несуществующий тип. Возврат в меню!\n");
             }
         }
         print(menu.printEditWarehouse());
