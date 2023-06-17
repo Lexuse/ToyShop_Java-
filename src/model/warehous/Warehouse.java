@@ -11,9 +11,9 @@ import java.util.List;
 public class Warehouse<E extends Product> implements InterfaceWarehouse, Serializable {
     private String name;
     WarehouseType type;
-    private List<E> products;
+    private final List<E> products;
     private static int iD = 5555;
-    private Warehouses warehouses = new Warehouses<>();
+    private Warehouses<Warehouse> warehouses = new Warehouses<>();
 
     public Warehouse(String name, WarehouseType type) {
         this.name = name;

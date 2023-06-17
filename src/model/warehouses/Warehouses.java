@@ -12,8 +12,11 @@ import java.util.List;
 public class Warehouses <E extends Warehouse> implements InterfaceWarehouses<E>, Serializable {
 
     private List<E> warehouses;
+    //E prizeFund = new PrizeFund<>(E);
 
-    public Warehouses(){this.warehouses = new ArrayList<>();}
+    public Warehouses(){
+        this.warehouses = new ArrayList<>();
+    }
 
     public List<E> getWarehouses() {
         return warehouses;
@@ -22,9 +25,9 @@ public class Warehouses <E extends Warehouse> implements InterfaceWarehouses<E>,
 
     public String printWarehouses() {
         StringBuilder result = new StringBuilder();
-        result.append("Количество складов: " + warehouses.size() + "\n");
+        result.append("Количество складов: ").append(warehouses.size()).append("\n");
         for (E warehouse : warehouses){
-            result.append(warehouse.getName() + ".  Тип склада:" + warehouse.getType().toString() + "\n");
+            result.append(warehouse.getName()).append(".  Тип склада:").append(warehouse.getType().toString()).append("\n");
         }
         return result.toString();
     }
@@ -56,7 +59,7 @@ public class Warehouses <E extends Warehouse> implements InterfaceWarehouses<E>,
         StringBuilder result = new StringBuilder();
         result.append("Содержимое всех складов: \n");
         for (E warehouse : getWarehouses()){
-            result.append(warehouse.toString() + ": \n");
+            result.append(warehouse.toString()).append(": \n");
             result.append(warehouse.getProducts().toString());
         }
         return null;

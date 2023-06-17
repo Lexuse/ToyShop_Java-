@@ -19,7 +19,6 @@ public class Service {
 
     public Service() {
         this(new Warehouses());
-        // new Warehouses();
     }
 
     public Service(InterfaceWarehouses warehouses) {
@@ -41,7 +40,7 @@ public class Service {
         if (warehouses != null){
             for (Warehouse war :warehouses){
                 if(nameOfWarehouse.equals(war.getName()) && war.getType().equals(WarehouseType.ИГРУШКИ)){
-                    System.out.println("CONSOLE: Игрушка добавлена");
+                    System.out.println("CONSOLE: (Service) Игрушка добавлена");
                     return war.addProduct(toy);
                 }
             }
@@ -92,7 +91,7 @@ public class Service {
         for (Warehouse war :this.warehouses)
             if (war.getName().equals(nameOfWarehouse)){
                 return war.getProductsList();
-            }else System.out.println("CONSOLE: Склада с таким именем нет");
+            }else System.out.println("CONSOLE: (Service) Склада с таким именем нет");
         return null;
 //        return warehouse.getProductsList();
     }

@@ -16,6 +16,11 @@ public class Presenter {
         this.view = view;
         this.service = service;
         view.setPresenter(this);
+        addPrizeFund();
+    }
+
+    private boolean addPrizeFund(){
+        return addWarehouse("Призовой", WarehouseType.ПРИЗОВОЙ);
     }
 
     public boolean addWarehouse(String name, WarehouseType type){

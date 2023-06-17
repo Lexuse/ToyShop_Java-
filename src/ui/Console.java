@@ -55,6 +55,7 @@ public class Console implements  View{
         print("Укажите желаемый тип: (указывается вводом с клавиатуры текста)");
         WarehouseType warehouseType =  reqTypeOfWarehouse(scan());
         String warehouseName = reqNameOfWarehouse();
+        print("Склад с название " + "'" +  warehouseName + "'" + ". Тип: " + warehouseType.toString() + " - успешно добавлен.\n");
         return presenter.addWarehouse(warehouseName, warehouseType);
     }
 
@@ -79,7 +80,7 @@ public class Console implements  View{
             print("Нет складов, или магазин не загружен!\n" +
                     "Сначала загрузите магазин, в котором имеются склады.\n");
         } else {
-            presenter.printWarehouses();
+            //presenter.printWarehouses();
             print(menu.printEditWarehouse());
             String nMenuStr = scan();
             if (isCanBeInt(nMenuStr)) {

@@ -1,25 +1,25 @@
-package src.model.prizeFund;
+package src.model.warehouses.prizeFund;
 
 import src.model.Product;
 import src.model.warehous.InterfaceWarehouse;
 import src.model.warehous.ProductIterator;
+import src.model.warehous.Warehouse;
 import src.model.warehous.WarehouseType;
+import src.model.warehouses.Warehouses;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
 
-public class PrizeFund <E extends Product> implements InterfaceWarehouse {
-    private String name;
-    WarehouseType type;
+public class PrizeFund <E extends Product> implements InterfaceWarehouse, Serializable {
+    private String name = "Призовой";
+    WarehouseType type = WarehouseType.ПРИЗОВОЙ;
     private List<E> products;
     private static int iD = 2222;
+    private Warehouses<Warehouse> warehouses = new Warehouses<>();
 
     public PrizeFund(){
-        name = "Призовой";
-        type = WarehouseType.ПРИЗОВОЙ;
-        iD += 1;
-        products = new ArrayList<>();
+        iD++;
     }
 
     @Override
