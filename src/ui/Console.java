@@ -1,8 +1,11 @@
 package src.ui;
 
+import src.model.Service;
 import src.model.goods.books.TypeOfBook;
 import src.model.goods.toy.TypeOfToy;
+import src.model.warehous.Warehouse;
 import src.model.warehous.WarehouseType;
+import src.model.warehouses.Warehouses;
 import src.presenter.Presenter;
 
 import java.io.IOException;
@@ -55,6 +58,13 @@ public class Console implements  View{
         print("Укажите желаемый тип: (указывается вводом с клавиатуры текста)");
         WarehouseType warehouseType =  reqTypeOfWarehouse(scan());
         String warehouseName = reqNameOfWarehouse();
+        Warehouses<Warehouse> actual = presenter.getListWarehouses();
+        for (Warehouse war : actual){
+            if (war.getName().equals(warehouseName)){
+                print("Склад с таким именем уже существует!\nУкажите другое имя.\n");
+                reqCreateWarehouse();
+            }
+        }
         print("Склад с название " + "'" +  warehouseName + "'" + ". Тип: " + warehouseType.toString() + " - успешно добавлен.\n");
         return presenter.addWarehouse(warehouseName, warehouseType);
     }
@@ -106,7 +116,7 @@ public class Console implements  View{
     }
 
     public void reqShopList(){
-        System.out.println(presenter.getShopList());
+        print(presenter.getShopList());
     }
 
     public boolean reqAddToy(){

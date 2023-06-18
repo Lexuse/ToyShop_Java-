@@ -25,6 +25,7 @@ public class Service {
         this.warehouses = warehouses;
     }
 
+
     public InterfaceWarehouses<Warehouse> getWarehouses() {
         return this.warehouses;
     }

@@ -3,7 +3,10 @@ package src.presenter;
 import src.model.Service;
 import src.model.goods.books.TypeOfBook;
 import src.model.goods.toy.TypeOfToy;
+import src.model.warehous.Warehouse;
 import src.model.warehous.WarehouseType;
+import src.model.warehouses.InterfaceWarehouses;
+import src.model.warehouses.Warehouses;
 import src.ui.View;
 
 import java.io.IOException;
@@ -75,5 +78,9 @@ public class Presenter {
 
     public String getProductsList(String nameOfWarehouse){
         return service.getProductsList(nameOfWarehouse);
+    }
+
+    public Warehouses<Warehouse> getListWarehouses() {
+        return (Warehouses<Warehouse>) service.getWarehouses();
     }
 }
